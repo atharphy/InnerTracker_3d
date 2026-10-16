@@ -1,0 +1,35 @@
+name: Build and smoke test
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.23.1
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run test:ci -- --watch=false
+      - run: python -m pip install -r requirements.txt
+      - run: python -m unittest discover -p 'test_*.py'
+      - run: python prepare_module_geometry.py demo/efuse_lookup.csv --dry-run
+      - run: npm run build
+      - run: npm run counts
+      - run: docker compose up -d --build
+      - name: Wait for Grafana and verify dashboard, plugin and sample data
+        run: python scripts/smoke-test.py --timeout 180
+      - uses: actions/upload-artifact@v4
+        with:
+          name: innertracker-grafana-plugin
+          path: dist/
+      - if: always()
+        run: docker compose logs --tail=100
+      - if: always()
+        run: docker compose down

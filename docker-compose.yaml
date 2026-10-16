@@ -1,0 +1,34 @@
+services:
+  grafana:
+    build: .
+    ports:
+      - "127.0.0.1:${GRAFANA_PORT:-3300}:3000"
+    environment:
+      GF_SECURITY_ADMIN_USER: ${GRAFANA_ADMIN_USER:-admin}
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:-change-this-password}
+      GF_AUTH_ANONYMOUS_ENABLED: "false"
+      PROMETHEUS_URL: ${PROMETHEUS_URL:-http://prometheus:9090}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - grafana-data:/var/lib/grafana
+    depends_on:
+      - prometheus
+    restart: unless-stopped
+  prometheus:
+    image: prom/prometheus:v3.5.0
+    volumes:
+      - ./demo/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    depends_on:
+      - demo-exporter
+    restart: unless-stopped
+  demo-exporter:
+    image: python:3.12-slim
+    command: ["python", "/demo/exporter.py", "--host", "0.0.0.0"]
+    volumes:
+      - ./demo:/demo:ro
+    restart: unless-stopped
+volumes:
+  grafana-data:
+  prometheus-data:

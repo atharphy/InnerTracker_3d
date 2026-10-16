@@ -1,0 +1,185 @@
+{
+  "annotations": {
+    "list": []
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 1,
+  "id": null,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "innertracker-prometheus"
+      },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 28,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "aggregation": "mean",
+        "badColor": "#e24d42",
+        "detailsDashboardUid": "",
+        "deviation": 2,
+        "geometryOverridesJson": "",
+        "goodColor": "#329b62",
+        "noDataColor": "#8193a8",
+        "nominalValue": 20,
+        "rememberVisibility": true,
+        "selectedColor": "#f2c96d",
+        "showBeamAxis": true,
+        "moduleAppearance": "photos",
+        "showPortcards": false,
+        "showAntlers": false,
+        "defaultAssembly": "bare",
+        "showServiceCylinder": false,
+        "showServices": false
+      },
+      "pluginVersion": "0.2.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "innertracker-prometheus"
+          },
+          "editorMode": "code",
+          "expr": "cmsit_monitor_value{register=~\"$register\"}",
+          "instant": false,
+          "legendFormat": "{{module_id}} / eFuse {{chip_efuse}} / Chip {{chip}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Complete Inner Tracker 3D",
+      "type": "atharphy-cmsitinnertracker3d-panel"
+    }
+  ],
+  "refresh": "5s",
+  "schemaVersion": 42,
+  "tags": [
+    "CMSIT",
+    "Inner Tracker",
+    "3D"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": true,
+          "text": "INTERNAL_NTC_REL",
+          "value": "INTERNAL_NTC_REL"
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "innertracker-prometheus"
+        },
+        "definition": "label_values(cmsit_monitor_value, register)",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Register",
+        "multi": false,
+        "name": "register",
+        "options": [],
+        "query": {
+          "query": "label_values(cmsit_monitor_value, register)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "None",
+          "value": "None"
+        },
+        "description": "Default lower limit for INTERNAL_NTC_REL. Enter a number to override it, or None for no lower bound.",
+        "hide": 0,
+        "label": "Low limit",
+        "name": "low_limit",
+        "options": [
+          {
+            "selected": true,
+            "text": "None",
+            "value": "None"
+          }
+        ],
+        "query": "None",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "20",
+          "value": "20"
+        },
+        "description": "Default upper limit for INTERNAL_NTC_REL. Enter a number to override it, or None for no upper bound.",
+        "hide": 0,
+        "label": "High limit",
+        "name": "high_limit",
+        "options": [
+          {
+            "selected": true,
+            "text": "20",
+            "value": "20"
+          }
+        ],
+        "query": "20",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "C",
+          "value": "C"
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "innertracker-prometheus"
+        },
+        "definition": "label_values(cmsit_monitor_value{register=\"$register\"}, unit)",
+        "description": "Unit reported by Prometheus for the selected register.",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Unit",
+        "multi": false,
+        "name": "register_unit",
+        "options": [],
+        "query": {
+          "query": "label_values(cmsit_monitor_value{register=\"$register\"}, unit)",
+          "refId": "PrometheusVariableQueryEditor-Unit"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-15m",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "CMSIT Inner Tracker 3D",
+  "uid": "cmsit-inner-tracker-3d",
+  "version": 1,
+  "weekStart": "",
+  "description": "Complete nominal Inner Tracker geometry. Bundled DEMO-* mappings and optional sample exporter are fictional; replace them for your hardware."
+}

@@ -1,0 +1,11 @@
+node_modules/
+.runtime/
+.venv/
+.env
+*.log
+__pycache__/
+*.pyc
+.eslintcache
+coverage/
+.DS_Store
+validation/

@@ -1,0 +1,11 @@
+# Fictional quick-start placement. Presence in YAML means installed.
+"0/0/0":
+  layer: 3
+  signed_ladder: 1
+  z_side: "z+"
+  module_index: 1
+"0/0/1":
+  layer: 1
+  signed_ladder: 1
+  z_side: "z+"
+  module_index: 2

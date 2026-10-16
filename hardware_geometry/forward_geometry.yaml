@@ -1,0 +1,27 @@
+# "0/0/0":
+#   detector_side: "+z"
+#   disk: 1
+#   ring: 1
+#   half: upper
+#   module_index: 0
+
+# "0/1/0":
+#   detector_side: "+z"
+#   disk: 8
+#   ring: 3
+#   half: lower
+#   module_index: 4
+
+# "0/2/0":
+#   detector_side: "-z"
+#   disk: 1
+#   ring: 2
+#   half: upper
+#   module_index: 3
+
+# "0/3/0":
+#   detector_side: "-z"
+#   disk: 8
+#   ring: 4
+#   half: lower
+#   module_index: 7

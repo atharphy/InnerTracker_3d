@@ -1,0 +1,8 @@
+# No real or demonstration portcards are installed by default.
+# Example: replace the ID and verify the slot against your mounting map.
+# PC-YOUR-ID:
+#   slot: "TBPX:+z:right:W1:R1:C1"
+#   connections:
+#     - module: "DEMO-TBPX-QUAD"
+#       lpgbt: 0
+{}

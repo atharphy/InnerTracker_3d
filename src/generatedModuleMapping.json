@@ -1,0 +1,26 @@
+{
+  "DEMO-TBPX-QUAD": {
+    "subdetector": "TBPX",
+    "layer": 3,
+    "signed_ladder": 1,
+    "z_side": "z+",
+    "module_index": 1,
+    "chips": {
+      "0": "900001",
+      "1": "900002",
+      "2": "900003",
+      "3": "900004"
+    }
+  },
+  "DEMO-TBPX-DOUBLE": {
+    "subdetector": "TBPX",
+    "layer": 1,
+    "signed_ladder": 1,
+    "z_side": "z+",
+    "module_index": 2,
+    "chips": {
+      "0": "900005",
+      "1": "900006"
+    }
+  }
+}
