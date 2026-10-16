@@ -4,8 +4,8 @@ A standalone Grafana panel for exploring the CMS Phase-2 Inner Tracker: **756 TB
 1,728 TFPX and 1,408 TEPX modules (3,892 total)**, with module/chip views, two-sided
 Dees, detector services, installation filters and optional live Prometheus data.
 
-The full source and a prebuilt plugin are included. No access to CERN, setup 72/79,
-or any sibling repository is needed. The bundled `DEMO-*` module IDs and sample
+The full source and a prebuilt plugin are included. No access to CERN, any test setup,
+or any sibling repository is mandatory. The bundled `DEMO-*` module IDs and sample
 measurements are fictional. The geometry loads without measurement data.
 
 ## 1. Quick start: Docker Compose
